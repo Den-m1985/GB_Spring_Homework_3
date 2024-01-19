@@ -39,8 +39,4 @@ public class DataProcessingService {
                 .orElse(0);
     }
 
-    public void  addUserToList(User user)
-    {
-        repository.getUsers().add(user);
-    }
 }

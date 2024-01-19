@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-   // @Autowired
     private NotificationService notificationService;
 
     // Внедрение зависимости через конструктор
@@ -20,10 +19,10 @@ public class UserService {
         user.setName(name);
         user.setAge(age);
         user.setEmail(email);
-
         // Отправляем уведомление о создании нового пользователя
         notificationService.notifyUser(user);
 
         return user;
     }
+
 }

@@ -7,26 +7,26 @@ import org.springframework.stereotype.Service;
 @Service
 public class RegistrationService {
     @Autowired
-    private UserService userService;  //homework
+    private UserService userService;
     @Autowired
-    private NotificationService notificationService; //homework
-
+    private NotificationService notificationService;
+    @Autowired
     private DataProcessingService dataProcessingService;
+
+    public RegistrationService() {
+    }
+
+    public void processRegistration(User user) {
+        dataProcessingService.getRepository().saveUser(user);
+        notificationService.sendNotification("User created and added to list");
+    }
 
     public DataProcessingService getDataProcessingService() {
         return dataProcessingService;
     }
 
-    //homework
-    public void processRegistration(String name, int age, String email){
-        /*
-    - создается пользователь из параметров метода
-    - созданный пользователь добавляется в репозиторий
-    - через notificationService выводится сообщение в консоль
-     */
-        User user = userService.createUser(name, age, email);
-        dataProcessingService.addUserToList(user);
-        notificationService.sendNotification("User created and added to list");
+    public UserService getUserService() {
+        return userService;
     }
 
 }
