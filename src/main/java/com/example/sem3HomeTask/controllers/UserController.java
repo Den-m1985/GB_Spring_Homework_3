@@ -16,12 +16,21 @@ public class UserController {
     private RegistrationService service;
 
     @GetMapping
-    public List<User> userList() { return service.getDataProcessingService().getRepository().getUsers(); }
+    public List<User> userList() {
+        return service.getDataProcessingService().getRepository().getUsers();
+    }
 
-    @PostMapping("/body")
+        @PostMapping("/body")
     public String userAddFromBody(@RequestBody User user)
     {
         service.getDataProcessingService().getRepository().getUsers().add(user);
         return "User added from body!";
     }
+//    @PostMapping("/body")
+//    public String userAddFromBody(@RequestParam String name, @RequestParam int age, @RequestParam String email) {
+//        System.out.println("@PostMapping(\"/body\")");
+//        service.processRegistration(name, age, email);
+//        return "User added from body!";
+//    }
+
 }
